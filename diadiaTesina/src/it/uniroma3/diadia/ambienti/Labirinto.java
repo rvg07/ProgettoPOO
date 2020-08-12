@@ -4,73 +4,80 @@ import java.util.HashMap;
 import java.util.Map;
 
 import it.uniroma3.diadia.attrezzi.Attrezzo;
+import lombok.Builder;
+import lombok.Getter;
+//import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Builder
 public class Labirinto {
 
-	public static LabirintoBuilder newBuilder() {
-		return new LabirintoBuilder();
-	}
+	//	public static LabirintoBuilder newBuilder() {
+	//		return new LabirintoBuilder();
+	//	}
 
-	private Stanza stanzaIniziale;
-	private Stanza stanzaVincente;
+	@Getter @Setter private Stanza stanzaIniziale;
+	@Getter @Setter private Stanza stanzaVincente;
+	//
+	//	public Stanza getStanzaIniziale() {
+	//		return this.stanzaIniziale;
+	//	}
+	//
+	//	public Stanza getStanzaVincente() {
+	//		return this.stanzaVincente;
+	//	}
+	//
+	//	public void setStanzaIniziale(Stanza stanzaIniziale) {
+	//		this.stanzaIniziale = stanzaIniziale;
+	//	}
+	//
+	//	public void setStanzaVincente(Stanza stanzaVincente) {
+	//		this.stanzaVincente = stanzaVincente;
+	//	}
 
-	public Stanza getStanzaIniziale() {
-		return this.stanzaIniziale;
-	}
-
-	public Stanza getStanzaVincente() {
-		return this.stanzaVincente;
-	}
-
-	public void setStanzaIniziale(Stanza stanzaIniziale) {
-		this.stanzaIniziale = stanzaIniziale;
-	}
-
-	public void setStanzaVincente(Stanza stanzaVincente) {
-		this.stanzaVincente = stanzaVincente;
-	}
 
 	public static class LabirintoBuilder {
 
-		private Labirinto labirinto;
-		private Stanza ultimaAggiunta;
-		private Map<String,Stanza> nome2stanza;
+		//private Labirinto labirinto;
+		private Stanza ultimaAggiunta; //ultimaStanzaAggiunta
 
-		public LabirintoBuilder() {
-			this.labirinto = new Labirinto();
-			this.nome2stanza = new HashMap<String, Stanza>();
-		}
+		private Map<String,Stanza> nome2stanza =  new HashMap <String, Stanza>(); //stanzeLabirinto
 
-		public LabirintoBuilder addStanzaIniziale(String nomeStanzaIniziale) {
-			Stanza iniziale = new Stanza(nomeStanzaIniziale);
-			this.labirinto.setStanzaIniziale(iniziale);
-			this.aggiungiAMappaEAggiornaUltima(iniziale);
+		//		public LabirintoBuilder() {
+		//			//	this.labirinto = new Labirinto();
+		//			this.nome2stanza = new HashMap<String, Stanza>();
+		//		}
+
+		public LabirintoBuilder addStanzaIniziale(Stanza stanzaIniziale) {
+			this.stanzaIniziale = stanzaIniziale;
+			this.aggiungiAMappaEAggiornaUltima(stanzaIniziale);
 			return this;
 		}
 
-		public LabirintoBuilder addStanzaVincente(String nomeStanzaVincente) {
-			Stanza vincente = new Stanza(nomeStanzaVincente);
-			this.labirinto.setStanzaVincente(vincente);
-			this.aggiungiAMappaEAggiornaUltima(vincente);
+		public LabirintoBuilder addStanzaVincente(Stanza stanzaVincente) {
+			this.stanzaVincente = stanzaVincente;
+			//			this.labirinto.setStanzaVincente(stanzaVincente);
+			this.aggiungiAMappaEAggiornaUltima(stanzaVincente);
 			return this;
 		}
 
-		public LabirintoBuilder addAdiacenza(String partenza, String adiacente, String direzione) {
-			Stanza stanzaPartenza = this.nome2stanza.get(partenza);
-			Stanza stanzaAdiacente = this.nome2stanza.get(adiacente);
+		public LabirintoBuilder addAdiacenza(Stanza partenza, Stanza adiacente, String direzione) {
+			Stanza stanzaPartenza = partenza;
+			Stanza stanzaAdiacente = adiacente;
 			stanzaPartenza.impostaStanzaAdiacente(Direzione.valueOf(direzione.toUpperCase()), stanzaAdiacente);
 			return this;
 		}
 
 		public LabirintoBuilder addAttrezzo(String nomeStanza, String nome, int peso) {
 			Attrezzo a= new Attrezzo(nome, peso);
+			this.nome2stanza = new HashMap<String, Stanza>();
 			this.nome2stanza.get(nomeStanza).addAttrezzo(a);
 			return this;
 		}
 
-		public LabirintoBuilder addAttrezzo(String nome, int peso) {
-			Attrezzo a= new Attrezzo(nome, peso);
-			this.ultimaAggiunta.addAttrezzo(a);
+		public LabirintoBuilder addAttrezzo(Attrezzo attrezzo) {
+			//Attrezzo a= new Attrezzo(nome, peso);
+			this.ultimaAggiunta.addAttrezzo(attrezzo);
 			return this;
 		}
 
@@ -98,9 +105,9 @@ public class Labirinto {
 			return this;
 		}
 
-		public Labirinto getLabirinto() {
-			return this.labirinto;
-		}
+		//		public Labirinto getLabirinto() {
+		//			return this.labirinto;
+		//		}
 
 		private void aggiungiAMappaEAggiornaUltima(Stanza stanza) {
 			this.ultimaAggiunta = stanza;

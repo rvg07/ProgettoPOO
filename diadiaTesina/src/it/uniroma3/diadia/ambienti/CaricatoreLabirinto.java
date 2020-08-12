@@ -20,7 +20,7 @@ public class CaricatoreLabirinto {
 	private BufferedReader reader;
 	private Set<String> stanze;
 	private int numeroLinea = 0;
-	private LabirintoBuilder builder = Labirinto.newBuilder();
+	private LabirintoBuilder builder = Labirinto.builder();
 	
 	public CaricatoreLabirinto(String nomeFile) throws FileNotFoundException {
 		this(new FileReader(nomeFile));
