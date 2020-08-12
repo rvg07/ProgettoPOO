@@ -2,6 +2,9 @@ package it.uniroma3.diadia;
 import it.uniroma3.diadia.ambienti.Labirinto;
 import it.uniroma3.diadia.ambienti.Stanza;
 import it.uniroma3.diadia.giocatore.Giocatore;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Questa classe modella una partita del gioco
@@ -13,11 +16,11 @@ import it.uniroma3.diadia.giocatore.Giocatore;
 
 public class Partita {
 
-	private Stanza stanzaCorrente;
+	@Getter @Setter private Stanza stanzaCorrente;
 	private boolean finita;
 	private Labirinto labirinto;
-	private Giocatore giocatore;
-	
+	@Getter private Giocatore giocatore;
+
 	public Partita(Labirinto labirinto){
 		this.finita = false;
 		this.labirinto = labirinto;
@@ -29,14 +32,14 @@ public class Partita {
 		return this.labirinto.getStanzaVincente();
 	}
 
-	public void setStanzaCorrente(Stanza stanzaCorrente) {
-		this.stanzaCorrente = stanzaCorrente;
-	}
+	//	public void setStanzaCorrente(Stanza stanzaCorrente) {
+	//		this.stanzaCorrente = stanzaCorrente;
+	//	}
+	//
+	//	public Stanza getStanzaCorrente() {
+	//		return this.stanzaCorrente;
+	//	}
 
-	public Stanza getStanzaCorrente() {
-		return this.stanzaCorrente;
-	}
-	
 	/**
 	 * Restituisce vero se e solo se la partita e' stata vinta
 	 * @return vero se partita vinta
@@ -68,10 +71,10 @@ public class Partita {
 	public void setCfu(int cfu) {
 		this.giocatore.setCfu(cfu);		
 	}	
-	
-	public Giocatore getGiocatore() {
-		return this.giocatore;
-	}
+
+	//	public Giocatore getGiocatore() {
+	//		return this.giocatore;
+	//	}
 
 	public boolean giocatoreIsVivo() {
 		return this.giocatore.getCfu() > 0;

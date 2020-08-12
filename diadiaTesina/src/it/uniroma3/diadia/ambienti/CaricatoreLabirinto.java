@@ -19,8 +19,8 @@ public class CaricatoreLabirinto {
 	private final String MAGICHE = "Magiche:";
 	private BufferedReader reader;
 	private Set<String> stanze;
-	private int numeroLinea;
-	private LabirintoBuilder builder;
+	private int numeroLinea = 0;
+	private LabirintoBuilder builder = Labirinto.newBuilder();
 	
 	public CaricatoreLabirinto(String nomeFile) throws FileNotFoundException {
 		this(new FileReader(nomeFile));
@@ -28,9 +28,9 @@ public class CaricatoreLabirinto {
 	
 	public CaricatoreLabirinto(Reader reader) {
 		this.stanze = new HashSet<String>();
-		this.numeroLinea = 0;
+		//this.numeroLinea = 0;
 		this.reader = new BufferedReader(reader);
-		this.builder = Labirinto.newBuilder();
+		//this.builder = Labirinto.newBuilder();
 	}
 
 	public void carica() {

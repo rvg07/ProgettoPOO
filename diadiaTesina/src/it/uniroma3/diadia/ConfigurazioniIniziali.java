@@ -3,12 +3,20 @@ package it.uniroma3.diadia;
 import java.io.IOException;
 import java.util.Properties;
 
+import lombok.Builder;
+import lombok.Getter;
+
+@Getter
+@Builder
 public final class ConfigurazioniIniziali {
 
 	private static final String DIADIA_PROPERTIES = "diadia.properties";
 	private static final String PESO_MAX = "pesoMax";
 	private static final String CFU = "cfu";
 	private static Properties prop = null;
+	
+	private int pesoMaxBorsa;
+	private int cfuIniziali;
 	
 	public static int getCFU() {
 		if(prop == null)

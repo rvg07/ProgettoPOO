@@ -2,10 +2,12 @@ package it.uniroma3.diadia.personaggi;
 
 import it.uniroma3.diadia.Partita;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
+import lombok.Getter;
+
 
 public abstract class AbstractPersonaggio {
 
-	private String nome;
+	@Getter private String nome;
 	private String presentazione;
 	private boolean haSalutato;
 
@@ -15,9 +17,9 @@ public abstract class AbstractPersonaggio {
 		this.haSalutato = false;
 	}
 
-	public String getNome() {
-		return this.nome;
-	}
+	//	public String getNome() {
+	//		return this.nome;
+	//	}
 
 	public boolean haSalutato() {
 		return this.haSalutato;
@@ -35,7 +37,7 @@ public abstract class AbstractPersonaggio {
 	}
 
 	abstract public String agisci(Partita partita);
-	
+
 	abstract public String riceviRegalo(Attrezzo regalo, Partita partita);
 
 	@Override
