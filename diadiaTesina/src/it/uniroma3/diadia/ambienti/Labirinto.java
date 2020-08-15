@@ -70,7 +70,7 @@ public class Labirinto {
 
 		public LabirintoBuilder addAttrezzo(String nomeStanza, String nome, int peso) {
 			Attrezzo a= new Attrezzo(nome, peso);
-			this.nome2stanza = new HashMap<String, Stanza>();
+			//this.nome2stanza = new HashMap<String, Stanza>();
 			this.nome2stanza.get(nomeStanza).addAttrezzo(a);
 			return this;
 		}
