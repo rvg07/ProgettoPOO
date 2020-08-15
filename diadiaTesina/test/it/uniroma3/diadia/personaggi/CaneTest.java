@@ -9,6 +9,7 @@ import org.junit.Test;
 
 import it.uniroma3.diadia.Partita;
 import it.uniroma3.diadia.ambienti.Labirinto;
+import it.uniroma3.diadia.ambienti.Stanza;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 
 public class CaneTest {
@@ -19,9 +20,10 @@ public class CaneTest {
 
 	@Before
 	public void setUp() throws Exception {
-		Labirinto labirinto = Labirinto.newBuilder()
-				.addStanzaIniziale("iniziale")
-				.getLabirinto();
+        Stanza stanzaIniziale = new Stanza("iniziale");
+        Labirinto labirinto = Labirinto.builder()
+                .addStanzaIniziale(stanzaIniziale)
+                .build();
 		this.partita = new Partita(labirinto);
 		this.regalo = new Attrezzo("Regalo", 1);
 		this.ciboPreferito = new Attrezzo("CiboPreferito", 2);
