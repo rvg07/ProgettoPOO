@@ -13,15 +13,19 @@ public class LabirintoTest {
 	
 	@Before
 	public void setUp() {
-		this.labirinto = Labirinto.newBuilder()
-				.addStanzaIniziale(INIZIALE)
-				.addStanzaVincente(VINCENTE)
-				.getLabirinto();
+		Stanza stanzaVincente = new Stanza("vincente");
+        Stanza stanzaIniziale = new Stanza("iniziale");
+
+
+        this.labirinto = Labirinto.builder()
+                .addStanzaIniziale(stanzaIniziale)
+                .addStanzaVincente(stanzaVincente)
+                .build();
 	}
 
 	@Test
 	public void testGetStanzaIniziale() {
-		assertEquals(INIZIALE, this.labirinto.getStanzaIniziale().getNome());
+		assertEquals(INIZIALE, this.labirinto.getStanzaIniziale().getNome()); 
 	}
 
 	@Test
