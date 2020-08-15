@@ -18,10 +18,10 @@ public class PartitaTest {
 	
 	@Before
 	public void setUp() {
-		this.labirinto = Labirinto.newBuilder()
+		this.labirinto = Labirinto.builder()
 				.addStanzaIniziale("iniziale")
 				.addStanzaVincente("vincente")
-				.getLabirinto();
+				.build();
 		this.partita = new Partita(this.labirinto);
 	}
 	
