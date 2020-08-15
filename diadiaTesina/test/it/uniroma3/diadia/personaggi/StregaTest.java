@@ -26,11 +26,11 @@ public class StregaTest {
         
 		Labirinto labirinto = Labirinto.builder()
 				.addStanzaIniziale(stanzaIniziale)
-				.addStanza(STANZA_EST)
+				.addStanza(stanzaEst)
 				.addAttrezzo(STANZA_EST,"attrezzo1", 1)
 				.addAttrezzo(STANZA_EST,"attrezzo2", 2)
 				.addAdiacenza(stanzaIniziale, stanzaEst, "est")
-				.addStanza(STANZA_OVEST)
+				.addStanza(stanzaOvest)
 				.addAttrezzo(STANZA_OVEST,"attrezzo3", 3)
 				.addAdiacenza(stanzaIniziale, stanzaOvest, "ovest")
 				.build();
