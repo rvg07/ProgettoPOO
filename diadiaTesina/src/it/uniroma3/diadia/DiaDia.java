@@ -25,7 +25,7 @@ import lombok.Builder;
  */
 
 
-@AllArgsConstructor()
+@AllArgsConstructor
 @Builder
 public class DiaDia {
 

@@ -81,8 +81,9 @@ public class Labirinto {
 			return this;
 		}
 
-		public LabirintoBuilder addStanza(String nome) {
-			Stanza stanza = new Stanza(nome);
+		//MODIFICA
+		public LabirintoBuilder addStanza(Stanza stanza) {
+			//Stanza stanza = new Stanza(nome);
 			this.aggiungiAMappaEAggiornaUltima(stanza);
 			return this;
 		}

@@ -9,11 +9,12 @@ import org.junit.Test;
 import it.uniroma3.diadia.IOConsole;
 import it.uniroma3.diadia.Partita;
 import it.uniroma3.diadia.ambienti.Labirinto;
+import it.uniroma3.diadia.ambienti.Stanza;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 import it.uniroma3.diadia.giocatore.Borsa;
 
 public class ComandoPrendiTest {
-	
+
 	private static final String ATTREZZO_INIZIALMENTE_NELLA_STANZA = "AttrezzoDaPrendere";
 	private ComandoPrendi comandoPrendi;
 	private Partita partita;
@@ -22,9 +23,10 @@ public class ComandoPrendiTest {
 	public void setUp() throws Exception {
 		this.comandoPrendi = new ComandoPrendi();
 		this.comandoPrendi.setIO(new IOConsole());
-		Labirinto labirinto = Labirinto.newBuilder()
-				.addStanzaIniziale("iniziale")
-				.getLabirinto();
+		Stanza stanzaIniziale = new Stanza("iniziale");
+		Labirinto labirinto = Labirinto.builder()
+				.addStanzaIniziale(stanzaIniziale)
+				.build();
 		this.partita = new Partita(labirinto);
 		Attrezzo attrezzoNuovo = new Attrezzo(ATTREZZO_INIZIALMENTE_NELLA_STANZA, 1);
 		this.partita.getStanzaCorrente().addAttrezzo(attrezzoNuovo);
@@ -37,7 +39,7 @@ public class ComandoPrendiTest {
 		assertTrue(partita.getGiocatore().getBorsa().hasAttrezzo(ATTREZZO_INIZIALMENTE_NELLA_STANZA));
 		assertFalse(partita.getStanzaCorrente().hasAttrezzo(ATTREZZO_INIZIALMENTE_NELLA_STANZA));
 	}
-	
+
 	@Test
 	public void testEseguiAttrezzoNonPresente() {
 		String nonPresente = "attrezzoNonPresente";
@@ -47,7 +49,7 @@ public class ComandoPrendiTest {
 		assertFalse(partita.getGiocatore().getBorsa().hasAttrezzo(ATTREZZO_INIZIALMENTE_NELLA_STANZA));
 		assertTrue(partita.getStanzaCorrente().hasAttrezzo(ATTREZZO_INIZIALMENTE_NELLA_STANZA));
 	}
-	
+
 	@Test
 	public void testEseguiBorsaPiena() {
 		Borsa borsa = partita.getGiocatore().getBorsa();

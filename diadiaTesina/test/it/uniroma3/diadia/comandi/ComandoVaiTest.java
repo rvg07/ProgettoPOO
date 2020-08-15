@@ -17,7 +17,7 @@ import it.uniroma3.diadia.ambienti.Stanza;
 import it.uniroma3.diadia.fixture.Fixture;
 
 public class ComandoVaiTest {
-	
+
 	private static final String NOME_STANZA_PARTENZA = "Partenza";
 	private static final String NORD = "nord";
 	private static final Direzione DIREZIONE_NORD = Direzione.NORD;
@@ -29,9 +29,11 @@ public class ComandoVaiTest {
 	public void setUp() throws Exception {
 		this.comandoVai = new ComandoVai();
 		this.comandoVai.setIO(new IOConsole());
-		Labirinto labirinto = Labirinto.newBuilder()
-				.addStanzaIniziale(NOME_STANZA_PARTENZA)
-				.getLabirinto();
+
+		Stanza stanzaPartenza = new Stanza("Partenza");
+		Labirinto labirinto = Labirinto.builder()
+				.addStanzaIniziale(stanzaPartenza)
+				.build();
 		this.partita = new Partita(labirinto);
 		this.partenza = this.partita.getStanzaCorrente();
 	}
@@ -42,7 +44,7 @@ public class ComandoVaiTest {
 		this.comandoVai.esegui(this.partita);
 		assertEquals(NOME_STANZA_PARTENZA, this.partita.getStanzaCorrente().getNome());
 	}
-	
+
 	@Test
 	public void testVaiStanzaPresente() {
 		Stanza destinazione = new Stanza("Destinazione");
@@ -51,7 +53,7 @@ public class ComandoVaiTest {
 		this.comandoVai.esegui(partita);
 		assertEquals("Destinazione", this.partita.getStanzaCorrente().getNome());
 	}
-	
+
 	@Test
 	public void testVaiStanzaPresenteInDirezioneSbagliata() {
 		Stanza destinazione = new Stanza("Destinazione");
@@ -60,15 +62,18 @@ public class ComandoVaiTest {
 		this.comandoVai.esegui(partita);
 		assertEquals(NOME_STANZA_PARTENZA, this.partita.getStanzaCorrente().getNome());
 	}
-	
+
 	@Test
 	public void testPartitaConComandoVai() throws Exception {
+		Stanza stanzaPartenza = new Stanza("iniziale");
+		Stanza stanzaAdiacente = new Stanza("Aula N10");
+		
 		String[] comandiDaEseguire = {"vai sud","fine"};
-		Labirinto labirinto = new LabirintoBuilder()
-				.addStanzaIniziale("iniziale")
-				.addStanza("Aula N10")
-				.addAdiacenza("iniziale", "Aula N10", "sud")
-				.getLabirinto();
+		Labirinto labirinto = Labirinto.builder() //new LabirintoBuilder()
+				.addStanzaIniziale(stanzaPartenza)
+				.addStanza(stanzaAdiacente)
+				.addAdiacenza(stanzaPartenza, stanzaAdiacente, "sud")
+				.build();
 		IOSimulator io = Fixture.creaSimulazionePartitaEGioca(labirinto, comandiDaEseguire);
 		assertTrue(io.hasNextMessaggio());
 		assertEquals(DiaDia.MESSAGGIO_BENVENUTO, io.nextMessaggio());
@@ -77,7 +82,7 @@ public class ComandoVaiTest {
 		assertTrue(io.hasNextMessaggio());
 		assertEquals(ComandoFine.MESSAGGIO_FINE, io.nextMessaggio());
 	}
-	
+
 	public void assertContains(String expected, String interaRiga) {
 		assertTrue(interaRiga.contains(expected));
 	}

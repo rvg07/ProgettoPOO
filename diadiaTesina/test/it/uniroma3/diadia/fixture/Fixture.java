@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 import it.uniroma3.diadia.DiaDia;
 import it.uniroma3.diadia.IOSimulator;
+import it.uniroma3.diadia.Partita;
 import it.uniroma3.diadia.ambienti.Labirinto;
 import it.uniroma3.diadia.ambienti.Stanza;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
@@ -12,7 +13,8 @@ public class Fixture {
 	
 	public static IOSimulator creaSimulazionePartitaEGioca(Labirinto labirinto, String... righeDaLeggere) throws Exception {
 		IOSimulator io = new IOSimulator(Arrays.asList(righeDaLeggere));
-		new DiaDia(io,labirinto).gioca();
+		Partita partita = new Partita(labirinto);
+		new DiaDia(io,partita).gioca();
 		return io;
 	}
 	

@@ -14,7 +14,7 @@ import it.uniroma3.diadia.attrezzi.Attrezzo;
 import it.uniroma3.diadia.giocatore.Borsa;
 
 public class ComandoPosaTest {
-	
+
 	private static final String ATTREZZO_DA_POSARE = "AttrezzoDaPosare";
 	private ComandoPosa comandoPosa;
 	private Partita partita;
@@ -23,9 +23,10 @@ public class ComandoPosaTest {
 	public void setUp() throws Exception {
 		this.comandoPosa = new ComandoPosa();
 		this.comandoPosa.setIO(new IOConsole());
-		Labirinto labirinto = Labirinto.newBuilder()
-				.addStanzaIniziale("iniziale")
-				.getLabirinto();
+		Stanza stanzaIniziale = new Stanza("iniziale");
+		Labirinto labirinto = Labirinto.builder()
+				.addStanzaIniziale(stanzaIniziale)
+				.build();
 		this.partita = new Partita(labirinto);
 		Borsa borsa = partita.getGiocatore().getBorsa();
 		Attrezzo attrezzoNuovo = new Attrezzo(ATTREZZO_DA_POSARE, 1);
@@ -39,7 +40,7 @@ public class ComandoPosaTest {
 		assertTrue(partita.getStanzaCorrente().hasAttrezzo(ATTREZZO_DA_POSARE));
 		assertFalse(partita.getGiocatore().getBorsa().hasAttrezzo(ATTREZZO_DA_POSARE));
 	}
-	
+
 	@Test
 	public void testEseguiAttrezzoNonPresente() {
 		String nonPresente = "attrezzoNonPresente";
@@ -49,18 +50,18 @@ public class ComandoPosaTest {
 		assertFalse(partita.getStanzaCorrente().hasAttrezzo(ATTREZZO_DA_POSARE));
 		assertTrue(partita.getGiocatore().getBorsa().hasAttrezzo(ATTREZZO_DA_POSARE));
 	}
-	
+
 	@Test
 	public void testEseguiStanzaPiena() {
 		Stanza stanzaCorrente = partita.getStanzaCorrente();
 		for (int i = 0; i < Stanza.NUMERO_MASSIMO_ATTREZZI; i++) {
 			stanzaCorrente.addAttrezzo(new Attrezzo("attrezzo"+i, 1));
 		}
-		
+
 		this.comandoPosa.setParametro(ATTREZZO_DA_POSARE);
 		this.comandoPosa.esegui(partita);
 		assertFalse(stanzaCorrente.hasAttrezzo(ATTREZZO_DA_POSARE));
 		assertTrue(partita.getGiocatore().getBorsa().hasAttrezzo(ATTREZZO_DA_POSARE));
 	}
-	
+
 }
