@@ -6,6 +6,10 @@ import java.util.Set;
 
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 import it.uniroma3.diadia.personaggi.AbstractPersonaggio;
+import lombok.Getter;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 
 /**
  * Classe Stanza - una stanza in un gioco di ruolo.
@@ -18,25 +22,26 @@ import it.uniroma3.diadia.personaggi.AbstractPersonaggio;
  * @version base
  */
 
+@RequiredArgsConstructor
 public class Stanza {
 
 	static final private int NUMERO_MASSIMO_DIREZIONI = 4;
 	static final public int NUMERO_MASSIMO_ATTREZZI = 10;
 
-	private String nome;
-	protected Map<String, Attrezzo> nome2attrezzo;
-	private Map<Direzione, Stanza> direzione2stanzaAdiacente;
-	private AbstractPersonaggio personaggio;
+	@NonNull @Getter  private String nome;
+	protected Map<String, Attrezzo> nome2attrezzo = new HashMap<>();
+	private Map<Direzione, Stanza> direzione2stanzaAdiacente = new HashMap<>();
+	@Getter @Setter private AbstractPersonaggio personaggio;
 
 	/**
 	 * Crea una stanza. Non ci sono stanze adiacenti, non ci sono attrezzi.
 	 * @param nome il nome della stanza
 	 */
-	public Stanza(String nome) {
-		this.nome = nome;
-		this.nome2attrezzo = new HashMap<>();
-		this.direzione2stanzaAdiacente = new HashMap<>();
-	}
+	//	public Stanza(String nome) {
+	//		this.nome = nome;
+	//		this.nome2attrezzo = new HashMap<>();
+	//		this.direzione2stanzaAdiacente = new HashMap<>();
+	//	}
 
 	/**
 	 * Imposta una stanza adiacente.
@@ -62,9 +67,9 @@ public class Stanza {
 	 * Restituisce la nome della stanza.
 	 * @return il nome della stanza
 	 */
-	public String getNome() {
-		return this.nome;
-	}
+	//	public String getNome() {
+	//		return this.nome;
+	//	}
 
 	/**
 	 * Restituisce la descrizione della stanza.
@@ -144,11 +149,11 @@ public class Stanza {
 		return this.direzione2stanzaAdiacente.keySet();
 	}
 
-	public AbstractPersonaggio getPersonaggio() {
-		return this.personaggio;
-	}
+	//	public AbstractPersonaggio getPersonaggio() {
+	//		return this.personaggio;
+	//	}
 
-	public void setPersonaggio(AbstractPersonaggio personaggio) {
-		this.personaggio = personaggio;
-	}
+	//	public void setPersonaggio(AbstractPersonaggio personaggio) {
+	//		this.personaggio = personaggio;
+	//	}
 }

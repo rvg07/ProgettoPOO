@@ -11,7 +11,11 @@ import java.util.TreeSet;
 
 import it.uniroma3.diadia.ConfigurazioniIniziali;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
+import lombok.RequiredArgsConstructor;
 
+
+//DA MODIFICARE
+//@RequiredArgsConstructor
 public class Borsa {
 
 	public final static int DEFAULT_PESO_MAX_BORSA = ConfigurazioniIniziali.getPesoMax();
