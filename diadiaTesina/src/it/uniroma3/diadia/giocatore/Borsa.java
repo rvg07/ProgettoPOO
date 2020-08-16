@@ -1,4 +1,5 @@
 package it.uniroma3.diadia.giocatore;
+
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -11,26 +12,25 @@ import java.util.TreeSet;
 
 import it.uniroma3.diadia.ConfigurazioniIniziali;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
+import lombok.Builder;
+import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
-
 //DA MODIFICARE
-//@RequiredArgsConstructor
+@RequiredArgsConstructor
 public class Borsa {
 
 	public final static int DEFAULT_PESO_MAX_BORSA = ConfigurazioniIniziali.getPesoMax();
-	private Map<String, Attrezzo> nome2attrezzo;
-	private int pesoMax;
-	private int pesoAttuale;
-
-	public Borsa() {
-		this(DEFAULT_PESO_MAX_BORSA);
-	}
-
+	private Map<String, Attrezzo> nome2attrezzo = new HashMap<>();
+	@NonNull private int pesoMax =DEFAULT_PESO_MAX_BORSA;
+	private int pesoAttuale = 0;
+//
+//	public Borsa() {
+//		this(DEFAULT_PESO_MAX_BORSA);
+//	}
+//
 	public Borsa(int pesoMax) {
 		this.pesoMax = pesoMax;
-		this.nome2attrezzo = new HashMap<>();
-		this.pesoAttuale = 0;
 	}
 
 	public boolean addAttrezzo(Attrezzo attrezzo) {
@@ -58,11 +58,11 @@ public class Borsa {
 	}
 
 	public boolean hasAttrezzo(String nomeAttrezzo) {
-		return this.getAttrezzo(nomeAttrezzo)!=null;
+		return this.getAttrezzo(nomeAttrezzo) != null;
 	}
 
 	public Attrezzo removeAttrezzo(String nomeAttrezzo) {
-		if(this.nome2attrezzo.containsKey(nomeAttrezzo))
+		if (this.nome2attrezzo.containsKey(nomeAttrezzo))
 			this.pesoAttuale = this.pesoAttuale - this.nome2attrezzo.get(nomeAttrezzo).getPeso();
 		return this.nome2attrezzo.remove(nomeAttrezzo);
 	}
@@ -70,10 +70,9 @@ public class Borsa {
 	public String toString() {
 		StringBuilder s = new StringBuilder();
 		if (!this.isEmpty()) {
-			s.append("Contenuto borsa ("+this.getPeso()+"kg/"+this.getPesoMax()+"kg): ");
+			s.append("Contenuto borsa (" + this.getPeso() + "kg/" + this.getPesoMax() + "kg): ");
 			s.append(this.nome2attrezzo.values().toString());
-		}
-		else
+		} else
 			s.append("Borsa vuota");
 		return s.toString();
 	}
@@ -88,11 +87,11 @@ public class Borsa {
 		return new TreeSet<>(this.nome2attrezzo.values());
 	}
 
-	public Map<Integer,Set<Attrezzo>> getContenutoRaggruppatoPerPeso() {
-		Map<Integer,Set<Attrezzo>> attrezzi = new HashMap<>();
-		for(Attrezzo attrezzo : this.nome2attrezzo.values()) {
+	public Map<Integer, Set<Attrezzo>> getContenutoRaggruppatoPerPeso() {
+		Map<Integer, Set<Attrezzo>> attrezzi = new HashMap<>();
+		for (Attrezzo attrezzo : this.nome2attrezzo.values()) {
 			Set<Attrezzo> attrezziPeso = attrezzi.get(attrezzo.getPeso());
-			if(attrezziPeso == null) {
+			if (attrezziPeso == null) {
 				attrezziPeso = new HashSet<>();
 				attrezzi.put(attrezzo.getPeso(), attrezziPeso);
 			}
@@ -106,4 +105,4 @@ public class Borsa {
 		attrezziPerPeso.addAll(this.nome2attrezzo.values());
 		return attrezziPerPeso;
 	}
-} 
+}

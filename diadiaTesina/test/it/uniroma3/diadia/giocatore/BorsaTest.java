@@ -24,11 +24,12 @@ public class BorsaTest {
 	private static final String ATTREZZO = "attrezzoSemplice";
 	private static final String SECONDO_ATTREZZO = "secondoAttrezzo";
 	private Borsa borsa;
-	private static final int PESO_MAX_BORSA = 20;
+	private static final int PESO_MAX_BORSA = 5;
 
 	@Before
 	public void setUp() {
-		this.borsa = new Borsa(PESO_MAX_BORSA);
+		int pesoMax =PESO_MAX_BORSA;
+		this.borsa = new Borsa(pesoMax);
 	}
 
 	@Test
