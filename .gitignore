@@ -3,5 +3,6 @@
 # MacOS Folder Attribute
 .DS_Store
 
-
+.buildpath
+*.class
 diadiaTesina/.classpath
