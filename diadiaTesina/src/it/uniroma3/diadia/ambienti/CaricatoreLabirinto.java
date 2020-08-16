@@ -93,7 +93,7 @@ public class CaricatoreLabirinto {
 		while (!nomeStanza.equals(MAGICHE)) {
 			if (nomeStanza == null)
 				throw new FormatoFileNonValidoException("Termine inaspettata del file [" + this.numeroLinea + "].");
-			this.builder.addStanza(nomeStanza);
+			this.builder.addStanza(new Stanza(nomeStanza));
 			this.stanze.add(nomeStanza);
 			nomeStanza = this.leggiRiga(reader);
 		}

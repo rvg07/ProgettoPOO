@@ -1,19 +1,24 @@
 package it.uniroma3.diadia.giocatore;
 
 import it.uniroma3.diadia.ConfigurazioniIniziali;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.NoArgsConstructor;
 
+@NoArgsConstructor
 public class Giocatore {
 
 	static final public int CFU_INIZIALI = ConfigurazioniIniziali.getCFU();
 
-	private int cfu;
-	private Borsa borsa;
-	
+	@Getter @Setter private int cfu = CFU_INIZIALI;
+	@Getter private Borsa borsa = new Borsa();
+	/*
+	 * 
 	public Giocatore() {
 		this.cfu = CFU_INIZIALI;
 		this.borsa = new Borsa();
 	}
-
+	
 	public int getCfu() {
 		return cfu;
 	}
@@ -25,6 +30,7 @@ public class Giocatore {
 	public Borsa getBorsa() {
 		return this.borsa;
 	}
+	*/
 	
 	@Override
 	public String toString() {
