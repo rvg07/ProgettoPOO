@@ -42,6 +42,7 @@ public class DiaDia {
 
 	private IO io;
 	private Partita partita;
+	private ConfigurazioniIniziali config;
 
 	//		public DiaDia(IO io, Labirinto labirinto) {
 	//			this.partita = new Partita(labirinto);
@@ -86,7 +87,7 @@ public class DiaDia {
 		Stanza labCampus = new Stanza("LabCampusOne");
 		Stanza biblioteca = new Stanza("Biblioteca");
 
-		//	ConfigurazioniIniziali config = ConfigurazioniIniziali.builder().cfuIniziali(20).pesoMaxBorsa(30).build();
+		ConfigurazioniIniziali config = ConfigurazioniIniziali.builder().cfuIniziali(20).pesoMaxBorsa(30).build();
 
 		Labirinto labirinto = Labirinto.builder()
 				.addStanzaIniziale(labCampus)
@@ -97,7 +98,7 @@ public class DiaDia {
 		Partita partita = new Partita(labirinto);
 
 		//		DiaDia gioco = new DiaDia(ioConsole, labirinto);
-		DiaDia gioco = new DiaDia(ioConsole, partita);
+		DiaDia gioco = new DiaDia(ioConsole, partita, config );
 		try {
 			gioco.gioca();
 		} catch (Exception e) {
