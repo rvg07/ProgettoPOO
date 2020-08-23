@@ -24,12 +24,14 @@ public class BorsaTest {
 	private static final String ATTREZZO = "attrezzoSemplice";
 	private static final String SECONDO_ATTREZZO = "secondoAttrezzo";
 	private Borsa borsa;
+	private Borsa borsa2;
 	private static final int PESO_MAX_BORSA = 5;
 
 	@Before
 	public void setUp() {
 		int pesoMax =PESO_MAX_BORSA;
-		this.borsa = new Borsa(pesoMax);
+		this.borsa = Borsa.builder().pesoMax(pesoMax).build();
+		this.borsa2 = Borsa.builder().build();
 	}
 
 	@Test
@@ -58,17 +60,18 @@ public class BorsaTest {
 	@Test
 	public void testGetPesoMax() {
 		assertEquals(PESO_MAX_BORSA, this.borsa.getPesoMax());
+		assertEquals(10, this.borsa2.getPesoMax());
 	}
 
 	@Test
 	public void testGetPesoIniziale() {
-		assertEquals(0, this.borsa.getPeso());
+		assertEquals(0, this.borsa.getPesoAttuale());
 	}
 
 	@Test
 	public void testGetPesoDopoAggiuntaAttrezzo() {
 		creaAttrezzoEAggiungiBorsa(this.borsa, ATTREZZO, 1);
-		assertEquals(1, this.borsa.getPeso());
+		assertEquals(1, this.borsa.getPesoAttuale());
 	}
 
 	@Test
@@ -110,7 +113,7 @@ public class BorsaTest {
 	public void testRemoveAttrezzoPesoZero() {
 		creaAttrezzoEAggiungiBorsa(this.borsa, ATTREZZO, 1);
 		this.borsa.removeAttrezzo(ATTREZZO);
-		assertEquals(0, this.borsa.getPeso());
+		assertEquals(0, this.borsa.getPesoAttuale());
 	}
 
 	@Test

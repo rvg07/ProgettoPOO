@@ -55,7 +55,7 @@ public class PartitaTest {
 
 	@Test
 	public void testFinitaSeVinta() {
-		this.partita.setStanzaCorrente(this.partita.getStanzaVincente());
+		this.partita.setStanzaCorrente(this.partita.getLabirinto().getStanzaVincente());
 		assertTrue(this.partita.isFinita());
 	}
 

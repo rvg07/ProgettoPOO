@@ -2,7 +2,7 @@ package it.uniroma3.diadia;
 import it.uniroma3.diadia.ambienti.Labirinto;
 import it.uniroma3.diadia.ambienti.Stanza;
 import it.uniroma3.diadia.giocatore.Giocatore;
-import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -17,20 +17,24 @@ import lombok.Setter;
 public class Partita {
 
 	@Getter @Setter private Stanza stanzaCorrente;
-	private boolean finita;
-	private Labirinto labirinto;
-	@Getter private Giocatore giocatore;
-
+	 private boolean finita =false ;
+	@Getter private Labirinto labirinto;
+	@Getter private Giocatore giocatore = new Giocatore();
+//	public Partita(Labirinto labirinto){
+//		this.finita = false;
+//		this.labirinto = labirinto;
+//		this.stanzaCorrente = this.labirinto.getStanzaIniziale();
+//		this.giocatore = new Giocatore();
+//	}
+	@Builder
 	public Partita(Labirinto labirinto){
-		this.finita = false;
 		this.labirinto = labirinto;
 		this.stanzaCorrente = this.labirinto.getStanzaIniziale();
-		this.giocatore = new Giocatore();
 	}
 
-	public Stanza getStanzaVincente() {
-		return this.labirinto.getStanzaVincente();
-	}
+//	public Stanza getStanzaVincente() {
+//		return this.labirinto.getStanzaVincente();
+//	}
 
 	//	public void setStanzaCorrente(Stanza stanzaCorrente) {
 	//		this.stanzaCorrente = stanzaCorrente;
@@ -45,7 +49,7 @@ public class Partita {
 	 * @return vero se partita vinta
 	 */
 	public boolean vinta() {
-		return this.getStanzaCorrente()== this.getStanzaVincente();
+		return this.getStanzaCorrente()== this.labirinto.getStanzaVincente();
 	}
 
 	/**
@@ -75,12 +79,11 @@ public class Partita {
 	//	public Giocatore getGiocatore() {
 	//		return this.giocatore;
 	//	}
-
 	public boolean giocatoreIsVivo() {
 		return this.giocatore.getCfu() > 0;
 	}
 
-	public void setLabirinto(Labirinto labirinto) {
-		this.labirinto = labirinto;
-	}
+//	public void setLabirinto(Labirinto labirinto) {
+//		this.labirinto = labirinto;
+//	}
 }

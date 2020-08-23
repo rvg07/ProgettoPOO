@@ -95,7 +95,7 @@ public class DiaDia {
 				.addAdiacenza(labCampus,biblioteca,"ovest")
 				.build();
 
-		Partita partita = new Partita(labirinto);
+		Partita partita = Partita.builder().labirinto(labirinto).build();
 
 		//		DiaDia gioco = new DiaDia(ioConsole, labirinto);
 		DiaDia gioco = new DiaDia(ioConsole, partita, config );

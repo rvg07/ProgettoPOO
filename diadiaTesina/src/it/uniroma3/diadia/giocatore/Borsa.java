@@ -13,7 +13,7 @@ import java.util.TreeSet;
 import it.uniroma3.diadia.ConfigurazioniIniziali;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 import lombok.Builder;
-import lombok.NonNull;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 //DA MODIFICARE
@@ -22,36 +22,42 @@ public class Borsa {
 
 	public final static int DEFAULT_PESO_MAX_BORSA = ConfigurazioniIniziali.getPesoMax();
 	private Map<String, Attrezzo> nome2attrezzo = new HashMap<>();
-	@NonNull private int pesoMax =DEFAULT_PESO_MAX_BORSA;
-	private int pesoAttuale = 0;
-//
+	@Getter private int pesoMax =DEFAULT_PESO_MAX_BORSA;
+	@Getter private int pesoAttuale = 0;
+
+	
 //	public Borsa() {
 //		this(DEFAULT_PESO_MAX_BORSA);
 //	}
-//
+// 
+//	public Borsa(int pesoMax) {
+//		this.pesoMax = pesoMax;
+//	}
+	
+	@Builder
 	public Borsa(int pesoMax) {
 		this.pesoMax = pesoMax;
 	}
 
 	public boolean addAttrezzo(Attrezzo attrezzo) {
-		if (this.getPeso() + attrezzo.getPeso() > this.getPesoMax())
+		if (this.getPesoAttuale() + attrezzo.getPeso() > this.getPesoMax())
 			return false;
 		this.nome2attrezzo.put(attrezzo.getNome(), attrezzo);
 		this.pesoAttuale += attrezzo.getPeso();
 		return true;
 	}
 
-	public int getPesoMax() {
-		return pesoMax;
-	}
+//	public int getPesoMax() {
+//		return pesoMax;
+//	}
 
 	public Attrezzo getAttrezzo(String nomeAttrezzo) {
 		return this.nome2attrezzo.get(nomeAttrezzo);
 	}
 
-	public int getPeso() {
-		return this.pesoAttuale;
-	}
+//	public int getPeso() {
+//		return this.pesoAttuale;
+//	}
 
 	public boolean isEmpty() {
 		return this.nome2attrezzo.isEmpty();
@@ -70,7 +76,7 @@ public class Borsa {
 	public String toString() {
 		StringBuilder s = new StringBuilder();
 		if (!this.isEmpty()) {
-			s.append("Contenuto borsa (" + this.getPeso() + "kg/" + this.getPesoMax() + "kg): ");
+			s.append("Contenuto borsa (" + this.getPesoAttuale() + "kg/" + this.getPesoMax() + "kg): ");
 			s.append(this.nome2attrezzo.values().toString());
 		} else
 			s.append("Borsa vuota");
