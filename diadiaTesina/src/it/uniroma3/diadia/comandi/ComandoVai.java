@@ -25,7 +25,7 @@ public class ComandoVai extends AbstractComando {
 		Stanza stanzaCorrente = partita.getStanzaCorrente();
 		Stanza prossimaStanza = null;
 		if (super.getParametro() == null) {
-			super.getIO().mostraMessaggio("Dove vuoi andare? Devi specificare una direzione");
+			super.getIo().mostraMessaggio("Dove vuoi andare? Devi specificare una direzione");
 			return;
 		}
 		Direzione direzione;
@@ -33,17 +33,17 @@ public class ComandoVai extends AbstractComando {
 			direzione = Direzione.valueOf(super.getParametro().toUpperCase());
 		} catch (IllegalArgumentException e) {
 			//caso in cui viene specificata una direzione non contemplata dall'enum Direzione
-			super.getIO().mostraMessaggio("Direzione inesistente");
+			super.getIo().mostraMessaggio("Direzione inesistente");
 			return;
 		}
 		prossimaStanza = stanzaCorrente.getStanzaAdiacente(direzione);
 		if (prossimaStanza == null) {
-			super.getIO().mostraMessaggio("Direzione inesistente");
+			super.getIo().mostraMessaggio("Direzione inesistente");
 			return;
 		}
 		
 		partita.setStanzaCorrente(prossimaStanza);
-		super.getIO().mostraMessaggio(partita.getStanzaCorrente().getNome());
+		super.getIo().mostraMessaggio(partita.getStanzaCorrente().getNome());
 		Giocatore giocatore = partita.getGiocatore();
 		giocatore.setCfu(giocatore.getCfu() - 1);
 	}

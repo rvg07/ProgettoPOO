@@ -11,6 +11,7 @@ public class Cane extends AbstractPersonaggio{
 
 	public Cane(String nome, String presentaz, String ciboPreferito, Attrezzo regalo) {
 		super(nome, presentaz);
+		
 		this.ciboPreferito = ciboPreferito;
 		this.regaloDelCane = regalo;
 	}

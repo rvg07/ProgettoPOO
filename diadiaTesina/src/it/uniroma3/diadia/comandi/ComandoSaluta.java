@@ -14,9 +14,9 @@ public class ComandoSaluta extends AbstractComando {
 	@Override
 	public void esegui(Partita partita) {
 		if(partita.getStanzaCorrente().getPersonaggio() == null)
-			super.getIO().mostraMessaggio(MESSAGGIO_CHI);
+			super.getIo().mostraMessaggio(MESSAGGIO_CHI);
 		else 
-			super.getIO().mostraMessaggio(partita.getStanzaCorrente().getPersonaggio().saluta());
+			super.getIo().mostraMessaggio(partita.getStanzaCorrente().getPersonaggio().saluta());
 	}
 
 }

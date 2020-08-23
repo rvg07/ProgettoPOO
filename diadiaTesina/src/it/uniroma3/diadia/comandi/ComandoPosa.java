@@ -17,18 +17,18 @@ public class ComandoPosa extends AbstractComando {
 		Borsa borsa = partita.getGiocatore().getBorsa();
 		Attrezzo attrezzoDaPosare = borsa.getAttrezzo(super.getParametro());
 		if (attrezzoDaPosare == null) {
-			super.getIO().mostraMessaggio("Attrezzo " + attrezzoDaPosare + " non presente nella borsa");
+			super.getIo().mostraMessaggio("Attrezzo " + attrezzoDaPosare + " non presente nella borsa");
 			return;
 		}
 		
 		boolean attrezzoPosato = partita.getStanzaCorrente().addAttrezzo(attrezzoDaPosare);
 		if (!attrezzoPosato) {
-			super.getIO().mostraMessaggio("Non c'è più spazio per nuovi attrezzi nella stanza");
+			super.getIo().mostraMessaggio("Non c'è più spazio per nuovi attrezzi nella stanza");
 			return;
 		}
 		
 		borsa.removeAttrezzo(super.getParametro());
-		super.getIO().mostraMessaggio("Attrezzo " + super.getParametro() + " posato!");
+		super.getIo().mostraMessaggio("Attrezzo " + super.getParametro() + " posato!");
 	}
 
 }

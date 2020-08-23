@@ -1,5 +1,9 @@
 package it.uniroma3.diadia.attrezzi;
 import it.uniroma3.diadia.ambienti.Stanza;
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Una semplice classe che modella un attrezzo.
@@ -11,36 +15,38 @@ import it.uniroma3.diadia.ambienti.Stanza;
  * @see Stanza
  * @version base
  */
+@AllArgsConstructor
+@EqualsAndHashCode
 public class Attrezzo implements Comparable<Attrezzo>  {
 
-	private String nome;
-	private int peso;
+	@Getter private String nome;
+	@Getter @Setter private int peso;
 
 	/**
 	 * Crea un attrezzo
 	 * @param nome il nome che identifica l'attrezzo
 	 * @param peso il peso dell'attrezzo
 	 */
-	public Attrezzo(String nome, int peso) {
-		this.peso = peso;
-		this.nome = nome;
-	}
+//	public Attrezzo(String nome, int peso) {
+//		this.peso = peso;
+//		this.nome = nome;
+//	}
 
 	/**
 	 * Restituisce il nome identificatore dell'attrezzo
 	 * @return il nome identificatore dell'attrezzo
 	 */
-	public String getNome() {
-		return this.nome;
-	}
+//	public String getNome() {
+//		return this.nome;
+//	}
 
 	/**
 	 * Restituisce il peso dell'attrezzo
 	 * @return il peso dell'attrezzo
 	 */
-	public int getPeso() {
-		return this.peso;
-	}
+//	public int getPeso() {
+//		return this.peso;
+//	}
 
 	/**
 	 * Restituisce una rappresentazione stringa di questo attrezzo
@@ -59,19 +65,19 @@ public class Attrezzo implements Comparable<Attrezzo>  {
 		return this.peso - that.getPeso();
 	}
 	
-	@Override
-	public boolean equals(Object obj) {
-		Attrezzo that = (Attrezzo)obj;
-		return this.getNome().equals(that.getNome()) && this.getPeso() == that.getPeso();
-	}
-	
-	@Override
-	public int hashCode() {
-		return this.getNome().hashCode() + this.getPeso();
-	}
+//	@Override
+//	public boolean equals(Object obj) {
+//		Attrezzo that = (Attrezzo)obj;
+//		return this.getNome().equals(that.getNome()) && this.getPeso() == that.getPeso();
+//	}
+//	
+//	@Override
+//	public int hashCode() {
+//		return this.getNome().hashCode() + this.getPeso();
+//	}
 
-	public void setPeso(int peso) {
-		this.peso = peso;
-	}
+//	public void setPeso(int peso) {
+//		this.peso = peso;
+//	}
 
 }

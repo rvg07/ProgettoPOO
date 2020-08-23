@@ -12,8 +12,8 @@ public class ComandoGuarda extends AbstractComando {
 
 	@Override
 	public void esegui(Partita partita) {
-		super.getIO().mostraMessaggio("Stanza corrente: " + partita.getStanzaCorrente().toString());
-		super.getIO().mostraMessaggio("Informazioni partita: " + partita.getGiocatore().toString());
+		super.getIo().mostraMessaggio("Stanza corrente: " + partita.getStanzaCorrente().toString());
+		super.getIo().mostraMessaggio("Informazioni partita: " + partita.getGiocatore().toString());
 	}
 
 }

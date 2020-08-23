@@ -3,19 +3,20 @@ package it.uniroma3.diadia.personaggi;
 import it.uniroma3.diadia.Partita;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 import lombok.Getter;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 
-
+@RequiredArgsConstructor
 public abstract class AbstractPersonaggio {
 
-	@Getter private String nome;
-	private String presentazione;
-	private boolean haSalutato;
-
-	public AbstractPersonaggio(String nome, String presentaz) {
-		this.nome = nome;
-		this.presentazione = presentaz;
-		this.haSalutato = false;
-	}
+	@NonNull @Getter private String nome;
+	@NonNull private String presentazione;
+	private boolean haSalutato = false;
+//
+//	public AbstractPersonaggio(String nome, String presentaz) {
+//		this.nome = nome;
+//		this.presentazione = presentaz;
+//	}
 
 	//	public String getNome() {
 	//		return this.nome;

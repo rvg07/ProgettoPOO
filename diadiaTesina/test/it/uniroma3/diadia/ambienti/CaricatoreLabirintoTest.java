@@ -24,7 +24,7 @@ public class CaricatoreLabirintoTest {
 
 	@Test
 	public void testCarica() {
-		CaricatoreLabirinto caricatore = new CaricatoreLabirinto(new StringReader(DESCRIZIONE_LABIRINTO));
+		CaricatoreLabirinto caricatore = CaricatoreLabirinto.builder().reader(new StringReader(DESCRIZIONE_LABIRINTO)).build();
 		caricatore.carica();
 		Labirinto labiritno = caricatore.getLabirinto();
 		assertEquals("N10", labiritno.getStanzaIniziale().getNome());

@@ -10,6 +10,8 @@ import java.util.Scanner;
 import java.util.Set;
 
 import it.uniroma3.diadia.ambienti.Labirinto.LabirintoBuilder;
+import lombok.Builder;
+import lombok.Getter;
 
 public class CaricatoreLabirinto {
 	private final String STANZE = "Stanze:";
@@ -18,17 +20,17 @@ public class CaricatoreLabirinto {
 	private final String ESTREMI = "Estremi:";
 	private final String MAGICHE = "Magiche:";
 	private BufferedReader reader;
-	private Set<String> stanze;
+	private Set<String> stanze = new HashSet<String>();
 	private int numeroLinea = 0;
 	private LabirintoBuilder builder = Labirinto.builder();
-	private Labirinto labirinto;
+	@Getter private Labirinto labirinto;
 
 	public CaricatoreLabirinto(String nomeFile) throws FileNotFoundException {
 		this(new FileReader(nomeFile));
 	}
-
+	@Builder
 	public CaricatoreLabirinto(Reader reader) {
-		this.stanze = new HashSet<String>();
+		//this.stanze = new HashSet<String>();
 		// this.numeroLinea = 0;
 		this.reader = new BufferedReader(reader);
 		// this.builder = Labirinto.newBuilder();
@@ -176,7 +178,7 @@ public class CaricatoreLabirinto {
 		}
 	}
 
-	public Labirinto getLabirinto() {
-		return this.labirinto;
-	}
+//	public Labirinto getLabirinto() {
+//		return this.labirinto;
+//	}
 }

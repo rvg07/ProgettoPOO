@@ -20,8 +20,8 @@ public class ComandoAiuto extends AbstractComando {
 	@Override
 	public void esegui(Partita partita) {
 		for(int i=0; i< ELENCO_COMANDI.length; i++) 
-			super.getIO().mostraMessaggio(ELENCO_COMANDI[i]+" ");
-		super.getIO().mostraMessaggio("");
+			super.getIo().mostraMessaggio(ELENCO_COMANDI[i]+" ");
+		super.getIo().mostraMessaggio("");
 	}
 
 }

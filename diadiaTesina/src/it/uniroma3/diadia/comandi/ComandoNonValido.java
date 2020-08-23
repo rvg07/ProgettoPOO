@@ -12,7 +12,7 @@ public class ComandoNonValido extends AbstractComando {
 	
 	@Override
 	public void esegui(Partita partita) {
-		super.getIO().mostraMessaggio("Comando non valido!");
+		super.getIo().mostraMessaggio("Comando non valido!");
 	}
 
 }
