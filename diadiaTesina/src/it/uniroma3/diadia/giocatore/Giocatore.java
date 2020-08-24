@@ -11,15 +11,16 @@ public class Giocatore {
 	static final public int CFU_INIZIALI = ConfigurazioniIniziali.getCFU();
 
 	@Getter @Setter private int cfu = CFU_INIZIALI;
-	//@Getter private Borsa borsa = new Borsa();
-	@Getter private Borsa borsa = Borsa.builder().build();
+	//@Getter private Borsa borsa = Borsa.builder().build();
+	@Getter private Borsa borsa = new Borsa();
+
 	/*
 	 * 
 	public Giocatore() {
 		this.cfu = CFU_INIZIALI;
 		this.borsa = new Borsa();
 	}
-	
+
 	public int getCfu() {
 		return cfu;
 	}
@@ -31,11 +32,11 @@ public class Giocatore {
 	public Borsa getBorsa() {
 		return this.borsa;
 	}
-	*/
-	
+	 */
+
 	@Override
 	public String toString() {
 		return "CFU: " + this.cfu + "\nBorsa: " + this.borsa.toString();
 	}
-	
+
 }

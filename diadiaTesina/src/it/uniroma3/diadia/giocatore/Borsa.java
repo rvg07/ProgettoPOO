@@ -14,6 +14,7 @@ import it.uniroma3.diadia.ConfigurazioniIniziali;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
 //DA MODIFICARE
@@ -22,18 +23,18 @@ public class Borsa {
 
 	public final static int DEFAULT_PESO_MAX_BORSA = ConfigurazioniIniziali.getPesoMax();
 	private Map<String, Attrezzo> nome2attrezzo = new HashMap<>();
-	@Getter private int pesoMax =DEFAULT_PESO_MAX_BORSA;
+	@Getter private int pesoMax = DEFAULT_PESO_MAX_BORSA;
 	@Getter private int pesoAttuale = 0;
 
-	
-//	public Borsa() {
-//		this(DEFAULT_PESO_MAX_BORSA);
-//	}
-// 
-//	public Borsa(int pesoMax) {
-//		this.pesoMax = pesoMax;
-//	}
-	
+
+	//	public Borsa() {
+	//		this(DEFAULT_PESO_MAX_BORSA);
+	//	}
+	// 
+	//	public Borsa(int pesoMax) {
+	//		this.pesoMax = pesoMax;
+	//	}
+
 	@Builder
 	public Borsa(int pesoMax) {
 		this.pesoMax = pesoMax;
@@ -47,17 +48,17 @@ public class Borsa {
 		return true;
 	}
 
-//	public int getPesoMax() {
-//		return pesoMax;
-//	}
+	//	public int getPesoMax() {
+	//		return pesoMax;
+	//	}
 
 	public Attrezzo getAttrezzo(String nomeAttrezzo) {
 		return this.nome2attrezzo.get(nomeAttrezzo);
 	}
 
-//	public int getPeso() {
-//		return this.pesoAttuale;
-//	}
+	//	public int getPeso() {
+	//		return this.pesoAttuale;
+	//	}
 
 	public boolean isEmpty() {
 		return this.nome2attrezzo.isEmpty();

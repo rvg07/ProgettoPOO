@@ -16,6 +16,7 @@ import java.util.TreeSet;
 import org.junit.Before;
 import org.junit.Test;
 
+import it.uniroma3.diadia.ConfigurazioniIniziali;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 
 
@@ -29,9 +30,12 @@ public class BorsaTest {
 
 	@Before
 	public void setUp() {
-		int pesoMax =PESO_MAX_BORSA;
-		this.borsa = Borsa.builder().pesoMax(pesoMax).build();
-		this.borsa2 = Borsa.builder().build();
+		int pesoMax = PESO_MAX_BORSA;
+		//int defaultBorsa = ConfigurazioniIniziali.getPesoMax();
+		this.borsa = new Borsa(pesoMax);
+		//this.borsa = Borsa.builder().pesoMax(pesoMax).build();
+		this.borsa2 = new Borsa();
+		//this.borsa2 = Borsa.builder().pesoMax(defaultBorsa).build();
 	}
 
 	@Test
@@ -142,7 +146,7 @@ public class BorsaTest {
 		expected.put(2, Collections.singleton(new Attrezzo(SECONDO_ATTREZZO, 2)));
 		assertEquals(expected, this.borsa.getContenutoRaggruppatoPerPeso());
 	}
-	
+
 	@Test
 	public void testGetSortedSetOrdinatoPerPeso() {
 		creaAttrezzoEAggiungiBorsa(this.borsa, SECONDO_ATTREZZO,1);

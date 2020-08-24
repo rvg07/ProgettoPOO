@@ -11,29 +11,29 @@ public abstract class AbstractPersonaggio {
 
 	@NonNull @Getter private String nome;
 	@NonNull private String presentazione;
-	private boolean haSalutato = false;
-//
-//	public AbstractPersonaggio(String nome, String presentaz) {
-//		this.nome = nome;
-//		this.presentazione = presentaz;
-//	}
+	@Getter private boolean presentato = false;
+	//
+	//	public AbstractPersonaggio(String nome, String presentaz) {
+	//		this.nome = nome;
+	//		this.presentazione = presentaz;
+	//	}
 
 	//	public String getNome() {
 	//		return this.nome;
 	//	}
 
-	public boolean haSalutato() {
-		return this.haSalutato;
-	}
+	//	public boolean isPresentato() {
+	//		return this.haSalutato;
+	//	}
 
 	public String saluta() {
 		StringBuilder risposta = new StringBuilder("Ciao, io sono ");
 		risposta.append(this.getNome()+".");
-		if (!this.haSalutato)
+		if (!this.presentato)
 			risposta.append(this.presentazione);
 		else
 			risposta.append("Ci siamo gia' presentati!");
-		this.haSalutato = true;
+		this.presentato = true;
 		return risposta.toString();
 	}
 

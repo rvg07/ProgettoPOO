@@ -22,7 +22,7 @@ public class Strega extends AbstractPersonaggio{
 		TreeSet<Stanza> stanzePerNumeroAttrezzi = new TreeSet<Stanza>(new ComparatoreStanzePerNumeroAttrezzi());
 		for(Direzione direzione : partita.getStanzaCorrente().getDirezioni())
 			stanzePerNumeroAttrezzi.add(partita.getStanzaCorrente().getStanzaAdiacente(direzione));
-		if(super.haSalutato())
+		if(super.isPresentato())
 			partita.setStanzaCorrente(stanzePerNumeroAttrezzi.first());
 		else
 			partita.setStanzaCorrente(stanzePerNumeroAttrezzi.last());
