@@ -2,6 +2,7 @@ package it.uniroma3.diadia.fixture;
 
 import java.util.Arrays;
 
+import it.uniroma3.diadia.ConfigurazioniIniziali;
 import it.uniroma3.diadia.DiaDia;
 import it.uniroma3.diadia.IOSimulator;
 import it.uniroma3.diadia.Partita;
@@ -14,7 +15,8 @@ public class Fixture {
 	public static IOSimulator creaSimulazionePartitaEGioca(Labirinto labirinto, String... righeDaLeggere) throws Exception {
 		IOSimulator io = new IOSimulator(Arrays.asList(righeDaLeggere));
 		Partita partita = new Partita(labirinto);
-		new DiaDia(io,partita).gioca();
+		ConfigurazioniIniziali config = ConfigurazioniIniziali.builder().cfuIniziali(20).pesoMaxBorsa(30).build();
+		new DiaDia(io,partita,config).gioca();
 		return io;
 	}
 	

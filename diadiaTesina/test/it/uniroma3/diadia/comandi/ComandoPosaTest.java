@@ -22,7 +22,7 @@ public class ComandoPosaTest {
 	@Before
 	public void setUp() throws Exception {
 		this.comandoPosa = new ComandoPosa();
-		this.comandoPosa.setIO(new IOConsole());
+		this.comandoPosa.setIo(new IOConsole());
 		Stanza stanzaIniziale = new Stanza("iniziale");
 		Labirinto labirinto = Labirinto.builder()
 				.addStanzaIniziale(stanzaIniziale)

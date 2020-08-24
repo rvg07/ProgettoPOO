@@ -12,7 +12,6 @@ import it.uniroma3.diadia.IOSimulator;
 import it.uniroma3.diadia.Partita;
 import it.uniroma3.diadia.ambienti.Direzione;
 import it.uniroma3.diadia.ambienti.Labirinto;
-import it.uniroma3.diadia.ambienti.Labirinto.LabirintoBuilder;
 import it.uniroma3.diadia.ambienti.Stanza;
 import it.uniroma3.diadia.fixture.Fixture;
 
@@ -28,7 +27,7 @@ public class ComandoVaiTest {
 	@Before
 	public void setUp() throws Exception {
 		this.comandoVai = new ComandoVai();
-		this.comandoVai.setIO(new IOConsole());
+		this.comandoVai.setIo(new IOConsole());
 
 		Stanza stanzaPartenza = new Stanza("Partenza");
 		Labirinto labirinto = Labirinto.builder()

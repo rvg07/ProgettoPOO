@@ -33,12 +33,12 @@ public class PartitaTest {
 
 	@Test
 	public void testGetStanzaVincenteNotNull() {
-		assertNotNull(this.partita.getStanzaVincente());
+		assertNotNull(this.partita.getLabirinto().getStanzaVincente());
 	}
 
 	@Test
 	public void testVintaSeStanzaCorrenteEVincente() {
-		this.partita.setStanzaCorrente(this.partita.getStanzaVincente());
+		this.partita.setStanzaCorrente(this.partita.getLabirinto().getStanzaVincente());
 		assertTrue(this.partita.vinta());
 	}
 
