@@ -22,7 +22,7 @@ public class ComandoPrendiTest {
 	@Before
 	public void setUp() throws Exception {
 		this.comandoPrendi = new ComandoPrendi();
-		this.comandoPrendi.setIox(new IOConsole());
+		this.comandoPrendi.setIo(new IOConsole());
 		Stanza stanzaIniziale = new Stanza("iniziale");
 		Labirinto labirinto = Labirinto.builder()
 				.addStanzaIniziale(stanzaIniziale)
