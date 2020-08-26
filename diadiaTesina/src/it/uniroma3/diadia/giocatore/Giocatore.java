@@ -11,8 +11,8 @@ public class Giocatore {
 	static final public int CFU_INIZIALI = ConfigurazioniIniziali.getCFU();
 
 	@Getter @Setter private int cfu = CFU_INIZIALI;
-	//@Getter private Borsa borsa = Borsa.builder().build();
-	@Getter private Borsa borsa = new Borsa();
+	@Getter private Borsa borsa = Borsa.builder().build();
+	//@Getter private Borsa borsa = new Borsa();
 
 	/*
 	 * 
