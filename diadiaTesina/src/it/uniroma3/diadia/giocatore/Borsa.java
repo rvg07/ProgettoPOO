@@ -22,7 +22,7 @@ public class Borsa {
 	public final static int DEFAULT_PESO_MAX_BORSA = ConfigurazioniIniziali.getPesoMax();
 	@Builder.Default private Map<String, Attrezzo> nome2attrezzo = new HashMap<>();
 	@Builder.Default @Getter private int pesoMax = DEFAULT_PESO_MAX_BORSA;
-	@Builder.Default @Getter private int pesoAttuale = 0;
+	@Getter private int pesoAttuale;
 
 	//	public Borsa() {
 	//		this(DEFAULT_PESO_MAX_BORSA);
