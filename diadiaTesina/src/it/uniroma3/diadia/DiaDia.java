@@ -6,9 +6,12 @@ import java.util.Scanner;
 import it.uniroma3.diadia.ambienti.Labirinto;
 
 import it.uniroma3.diadia.ambienti.Stanza;
+import it.uniroma3.diadia.attrezzi.Attrezzo;
 import it.uniroma3.diadia.comandi.AbstractComando;
 import it.uniroma3.diadia.comandi.FabbricaDiComandi;
 import it.uniroma3.diadia.comandi.FabbricaDiComandiRiflessiva;
+import it.uniroma3.diadia.personaggi.AbstractPersonaggio;
+import it.uniroma3.diadia.personaggi.Mago;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 
@@ -86,8 +89,9 @@ public class DiaDia {
 		IO ioConsole = new IOConsole(scannerDiLinee);
 		Stanza labCampus = new Stanza("LabCampusOne");
 		Stanza biblioteca = new Stanza("Biblioteca");
-
+		Mago mago = new Mago("Merlino", "CiaoSonoUnMago",new Attrezzo("attrezzoMago", 1)); 
 		ConfigurazioniIniziali config = ConfigurazioniIniziali.builder().cfuIniziali(20).pesoMaxBorsa(30).build();
+		labCampus.setPersonaggio(mago);
 
 		Labirinto labirinto = Labirinto.builder()
 				.addStanzaIniziale(labCampus)

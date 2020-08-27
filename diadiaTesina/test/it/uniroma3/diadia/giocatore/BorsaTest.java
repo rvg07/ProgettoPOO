@@ -62,8 +62,8 @@ public class BorsaTest {
 
 	@Test
 	public void testGetPesoMax() {
-		assertEquals(PESO_MAX_BORSA, this.borsa.getPesoMax());
-		assertEquals(10, this.borsa2.getPesoMax());
+		assertEquals(PESO_MAX_BORSA, this.borsa.getPesoMax()); // pesoMax borsa passato come parametro
+		assertEquals(10, this.borsa2.getPesoMax()); // pesoMax borsa di default = 10 
 	}
 
 	@Test
