@@ -31,7 +31,7 @@ public final class ConfigurazioniIniziali {
 			return this;
 		}
 	}
-	
+	//
 	public static int getCFU() {
 		if(prop == null)
 			carica();
