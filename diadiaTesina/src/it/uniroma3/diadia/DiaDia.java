@@ -87,12 +87,21 @@ public class DiaDia {
 	public static void main(String[] argc) {
 		Scanner scannerDiLinee = new Scanner(System.in);
 		IO ioConsole = new IOConsole(scannerDiLinee);
-		Stanza labCampus = new Stanza("LabCampusOne");
-		Stanza biblioteca = new Stanza("Biblioteca");
-		Mago mago = new Mago("Merlino", "CiaoSonoUnMago",new Attrezzo("attrezzoMago", 1)); 
+		//Stanza labCampus = new Stanza("LabCampusOne");
+		
+		//AbstractPersonaggio mago = ); 
 		ConfigurazioniIniziali config = ConfigurazioniIniziali.builder().cfuIniziali(20).pesoMaxBorsa(30).build();
-		labCampus.setPersonaggio(mago);
-
+		//labCampus.setPersonaggio(mago);
+		//Stanza biblioteca = new Stanza("Biblioteca");
+		Stanza labCampus = Stanza.builder()
+				.nome("LabCampusOne")
+				.personaggio(new Mago("Merlino", "CiaoSonoUnMago",new Attrezzo("attrezzoMago", 1)))
+				.build();
+		Stanza biblioteca = Stanza.builder()
+				.nome("Biblioteca")
+				.build();
+		
+		
 		Labirinto labirinto = Labirinto.builder()
 				.addStanzaIniziale(labCampus)
 				.addStanzaVincente(biblioteca)

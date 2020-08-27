@@ -6,6 +6,7 @@ import java.util.Set;
 
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 import it.uniroma3.diadia.personaggi.AbstractPersonaggio;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
@@ -33,6 +34,11 @@ public class Stanza {
 	private Map<Direzione, Stanza> direzione2stanzaAdiacente = new HashMap<>();
 	@Getter @Setter private AbstractPersonaggio personaggio;
 
+	@Builder()
+	  public Stanza(String nome,AbstractPersonaggio personaggio) {
+	    this.nome = nome;
+	    this.personaggio = personaggio;
+	  }
 	/**
 	 * Crea una stanza. Non ci sono stanze adiacenti, non ci sono attrezzi.
 	 * @param nome il nome della stanza
